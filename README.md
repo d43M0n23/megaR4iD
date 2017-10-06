@@ -11,6 +11,7 @@ A useful script to use simple commands for your LSI Controller
 # SUPPORTED DISTRIBUTIONS
 |Distribution | Version Check | supported | dependencies already installed |status |
 ----------|-------|------|------|-------|
+|Citrix Xen|1.0 | yes| yes | working  |
 |Kali Linux|1.0 | yes| yes | working   |
 |Debian(9)|1.0 | yes| yes | working   |
 |Ubuntu|1.0 |yes|yes|working   |
