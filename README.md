@@ -17,8 +17,8 @@ A useful script to use simple commands for your LSI Controller
 |Xbuntu|1.0 |yes|yes|working  |
 
 # SUPPORTED CONTROLLERS LSI
-<ul><li>MegaRAID SAS 9361-24i</li></ul>
-MegaRAID SAS 9361-16i
+<ul><li>MegaRAID SAS 9361-24i</li>
+<li>MegaRAID SAS 9361-16i</li></ul>
 Syncro 9361-8i
 Syncro 9380-8e
 MegaRAID SAS 9361-8i
