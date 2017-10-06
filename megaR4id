@@ -1,0 +1,133 @@
+#!/bin/bash
+
+######################################################################
+# megaR4id
+# Converts syntax of LSI Raid Controller 2 easy use with short command
+# Needs MegaRaid/CLi installed
+# command: > megaR4id or megaR4id --option
+######################################################################
+
+######################################################################
+# last modify: 06.10.2017
+# bug or anything: d43M0n23@3xpl0it.com
+######################################################################
+
+######################################################################
+# Bash sTyl3!
+clear='\033[0m'			#alle Attribute zurücksetzen
+bold='\033[1m'			#Fettschrift
+red='\033[31m'			#Schriftfarbe rot
+green='\033[32m'		#Schriftfarbe grün
+yell='\033[33m'			#Schriftfarbe gelb
+blue='\033[34m'			#Schriftfarbe blau
+mag='\033[35m'			#Schriftfarbe magenta
+turk='\033[36m'			#Schriftfarbe türkis
+white='\033[37m'		#Schriftfarbe weiß
+######################################################################
+
+##Base-Variablen
+DATE=$(date +%F)
+version=v1.0
+vdate=16.09.2017
+
+# Local Destination
+INSTALL_DIR=/usr/share/megaR4id
+
+
+#INSTALL
+if [ ! -d $INSTALL_DIR ]; then
+echo -e "\n${green} + -- --=[This is your first run of the megaR4id script${clear}"
+echo -e "${green} + -- --=[This script will install megaR4id under $INSTALL_DIR.${clear}"
+echo -e "${green} + -- --=[After install you can use the command 'megaR4id' Server/System wide and remove the downloaded git folder${clear}"
+
+sleep 2
+mkdir -p $INSTALL_DIR 2> /dev/null
+cp -Rf $PWD/* $INSTALL_DIR 2> /dev/null
+rm -f /usr/bin/megaR4id
+ln -s $INSTALL_DIR/megaR4id /usr/bin/megaR4id
+echo -e "${green} + -- --=[Installation Finish.${clear}"
+sleep 2
+fi
+
+
+### MAIN FUNCTIONS ###
+
+#Latest release
+LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' https://github.com/d43M0n23/megaR4id/releases/latest)
+LATEST_VERSION=$(echo $LATEST_RELEASE | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
+
+#UPDATE NEW VERSION
+if [ "$LATEST_VERSION" != "$version" ]; then
+echo -e "\n${red}Your Version of megaR4id is outdated!${clear}"
+echo -e "\n${green}Please use the update function: megaR4id --update!${clear}"
+sleep 5
+fi
+
+#UPDATE
+if [ "$1"  = "--update" ]; then
+echo -e "\n${turk}You have select the update Feature${clear}"
+sleep 2
+cd /tmp/
+git clone https://github.com/d43M0n23/megaR4id.git
+cp -Rf megaR4id/* $INSTALL_DIR 2> /dev/null
+rm -f /usr/bin/megaR4id
+ln -s $INSTALL_DIR/megaR4id /usr/bin/megaR4id
+echo -e "\n${green}Update finish.Please restart megaR4id.${clear}"
+rm -r megaR4id
+exit
+fi
+
+
+
+#UNINSTALL
+if [ "$1"  = "--deinstall" ]; then
+echo -e "\n${turk}You have select the deinstall Feature${clear}"
+sleep 2
+rm -f /usr/bin/megaR4id
+cd /usr/share/
+rm -r megaR4id/
+echo -e "\n${turk}deinstall Finish${clear}"
+cd
+exit
+fi
+
+
+
+#START MAINSTAGE
+clear
+echo -e '\n'
+echo -e '                               ____  __ __  _     __'
+echo -e '   ____ ___  ___  ____ _____ _/ __ \/ // / (_)___/ /'
+echo -e '  / __ `__ \/ _ \/ __ `/ __ `/ /_/ / // /_/ / __  / '
+echo -e ' / / / / / /  __/ /_/ / /_/ / _, _/__  __/ / /_/ /  '
+echo -e '/_/ /_/ /_/\___/\__, /\__,_/_/ |_|  /_/ /_/\__,_/   '
+echo -e '               /____/                               '
+echo -e "\n${orange} + -- --=[https://3xpl0it.com${clear} ${red}Version ${version}${clear}"
+sleep 1
+
+echo -e "\n"
+cat <<EOF
+megaR4id
+EOF
+echo -e "Latest Release: ${LATEST_VERSION}"
+echo -e "\n"
+
+#CASE
+PS3='Please enter your choice: '
+options=("Install Wifi Driver" "Show Commands" "Quit")
+
+select opt in "${options[@]}"
+do
+    case $opt in
+        "Install Wifi Driver")
+            echo "Irgendwas 1"
+            ;;
+        "Show Commands")
+            echo "Irgendwas 2"
+            ;;
+        "Quit")
+            break
+            ;;
+        *) echo invalid option;;
+    esac
+done
