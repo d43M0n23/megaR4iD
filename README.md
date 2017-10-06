@@ -72,9 +72,9 @@ Update of megaR4id script:
 megaR4id is now updateded on your system. restart the script
 
 ## DEINSTALL
-DEInstallation of megaR4id script:
+deInstallation of megaR4id script:
 <pre><i><n>megaR4id --deinstall</pre></i></n>
-megaR4id is now DEinstalled on your system.
+megaR4id is now deinstalled on your system.
 
 that's it ,)
 Have fun & n1c3 d4Y. 3xpl0it.com
