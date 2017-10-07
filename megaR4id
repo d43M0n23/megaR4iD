@@ -121,7 +121,7 @@ fi
 
 
 sh_stage1 () {
-# VOLL DER CODE HIER
+echo " VOLL DER CODE HIER"
 }
 
 
