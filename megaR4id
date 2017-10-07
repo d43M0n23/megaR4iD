@@ -25,16 +25,41 @@ turk='\033[36m'			#Schriftfarbe türkis
 white='\033[37m'		#Schriftfarbe weiß
 ######################################################################
 
+
+# -----------------------------------
+# Colorise shell Script output leters
+# -----------------------------------
+Colors() {
+Escape="\033";
+  white="${Escape}[0m";
+  RedF="${Escape}[31m";
+  GreenF="${Escape}[32m";
+  YellowF="${Escape}[33m";
+  BlueF="${Escape}[34m";
+  CyanF="${Escape}[36m";
+Reset="${Escape}[0m";
+}
+
+
 ##Base-Variablen
 DATE=$(date +%F)
 version=v1.0
-vdate=16.09.2017
+vdate=08.10.2017
+
+# Controller ID default
+controller=0
 
 # Local Destination
 INSTALL_DIR=/usr/share/megaR4id
 
 
-#INSTALL
+# megacli directory default
+megacli_dir=/opt/MegaRAID/MegalCli
+
+# storecli directory default
+storecli_dir=/opt/MegaRAID/storecli
+
+# INSTALL
 if [ ! -d $INSTALL_DIR ]; then
 echo -e "\n${green} + -- --=[This is your first run of the megaR4id script${clear}"
 echo -e "${green} + -- --=[This script will install megaR4id under $INSTALL_DIR.${clear}"
@@ -49,21 +74,22 @@ echo -e "${green} + -- --=[Installation Finish.${clear}"
 sleep 2
 fi
 
+#---------------
+# MAIN FUNCTIONS
+# --------------
 
-### MAIN FUNCTIONS ###
-
-#Latest release
+# Latest release
 LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' https://github.com/d43M0n23/megaR4id/releases/latest)
 LATEST_VERSION=$(echo $LATEST_RELEASE | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
 
-#UPDATE NEW VERSION
+# UPDATE NEW VERSION
 if [ "$LATEST_VERSION" != "$version" ]; then
 echo -e "\n${red}Your Version of megaR4id is outdated!${clear}"
 echo -e "\n${green}Please use the update function: megaR4id --update!${clear}"
 sleep 5
 fi
 
-#UPDATE
+# UPDATE
 if [ "$1"  = "--update" ]; then
 echo -e "\n${turk}You have select the update Feature${clear}"
 sleep 2
@@ -77,9 +103,7 @@ rm -r megaR4id
 exit
 fi
 
-
-
-#UNINSTALL
+# UNINSTALL
 if [ "$1"  = "--deinstall" ]; then
 echo -e "\n${turk}You have select the deinstall Feature${clear}"
 sleep 2
@@ -91,9 +115,41 @@ cd
 exit
 fi
 
+# ---------------
+# SCRIPT FUNCTION
+# ---------------
 
 
-#START MAINSTAGE
+sh_stage1 () {
+# VOLL DER CODE HIER
+}
+
+
+# -------------------------
+# FUNTION TO EXIT FRAMEWORK
+# -------------------------
+sh_exit () {
+echo ${BlueF}[â˜ ]${white} Exit megaR4id framework...${Reset};
+sleep 1
+exit
+}
+
+
+# ---------------
+# START MAINSTAGE
+# ---------------
+
+sh_main () {
+echo "nothing" > /dev/null 2>&1
+}
+
+Colors;
+# -----------------------------
+# MAIN MENU SHELLCODE GENERATOR
+# -----------------------------
+# Loop forever
+while :
+do
 clear
 echo -e '\n'
 echo -e '                               ____  __ __  _     __'
@@ -111,23 +167,59 @@ megaR4id
 EOF
 echo -e "Latest Release: ${LATEST_VERSION}"
 echo -e "\n"
-
-#CASE
-PS3='Please enter your choice: '
-options=("Install Wifi Driver" "Show Commands" "Quit")
-
-select opt in "${options[@]}"
-do
-    case $opt in
-        "Install Wifi Driver")
-            echo "Irgendwas 1"
-            ;;
-        "Show Commands")
-            echo "Irgendwas 2"
-            ;;
-        "Quit")
-            break
-            ;;
-        *) echo invalid option;;
-    esac
+cat << !
+    â•”â”€â”€â”€â”€â”€â”€â”€â”€â•¦â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â•—
+    | OPTION |                  DESCRIPTION(filters)                    |
+    â• â”€â”€â”€â”€â”€â”€â”€â”€â•©â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â•£
+    |   1    -  Firewall filter  (tcp/udp)      -  report/capture_creds |
+    |   2    -  Capture cookies  (http/auth)    -  sidejacking attack   |
+    |   3    -  Drop all packets (src/dst)      -  packets drop/kill    |
+    |   4    -  Redirect browser traffic        -  to another domain    |
+    |   5    -  Redirect browser traffic        -  to google sphere     |
+    |   6    -  Sniff browser traffic (http)    -  visited url's        |
+    |   7    -  Sniff browser traffic (http)    -  capture pictures     |
+    |   8    -  Sniff chat messages   (live)    -  AOL,IRC,YAHOO,MSN    |
+    |   9    -  Inject backdoor into (</body>)  -  exe,bat,jar,ps1,dll  |
+    |  10    -  Firefox browser heap-spray      -  buffer overflow      |
+    |  11    -  Android browser heap-spray      -  buffer overflow      |
+    |  12    -  Tor-browser heap-spray(windows) -  buffer overflow      |
+    |  13    -  Clone website + keylooger       -  javascritp_keylooger |
+    |  14    -  Modem/router login webpage      -  javascritp_keylooger |
+    |  15    -  Replace website images          -  img src=http://other |
+    |  16    -  Replace website text            -  replace: worlds      |
+    |                                                                   |
+    |   H    -  megaR4id github help                                    |
+    |   E    -  Exit/close megaR4id                                     |
+    â•šâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â•£
+!
+echo "${YellowF}                                                       SSA_${RedF}RedTeam${YellowF}Â©2017${BlueF}_âŒ‹${Reset}"
+sleep 1
+echo ${BlueF}[â–¶]${white} Chose Your Option${RedF}: ${Reset};
+echo -n "$PrompT"
+read choice
+case $choice in
+1) sh_stage1 ;;
+2) sh_stage2 ;;
+3) sh_stage3 ;;
+4) sh_stage4 ;;
+5) sh_stage5 ;;
+6) sh_stage6 ;;
+7) sh_stage7 ;;
+8) sh_stage8 ;;
+9) sh_stage9 ;;
+10) sh_stage10 ;;
+11) sh_stage11 ;;
+12) sh_stage12 ;;
+13) sh_stage13 ;;
+14) sh_stage14 ;;
+15) sh_stage15 ;;
+16) sh_stage16 ;;
+h) sh_help ;;
+H) sh_help ;;
+e) sh_exit ;;
+E) sh_exit ;;
+*) echo "\"$choice\": is not a valid Option"; sleep 1 ;;
+esac
 done
+
+
