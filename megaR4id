@@ -193,7 +193,7 @@ cat << !
     ---------------------------------------------------------------------
 !
 sleep 1
-echo -e ${BlueF}[â–¶]${white} Chose Your Option${RedF}: ${Reset};
+echo -e ${white} Chose Your Option${RedF}: ${Reset};
 echo -n "$PrompT"
 read choice
 case $choice in
