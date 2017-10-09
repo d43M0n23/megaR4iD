@@ -242,5 +242,3 @@ E) sh_exit ;;
 *) echo "\"$choice\": is not a valid Option"; sleep 1 ;;
 esac
 done
-
-
