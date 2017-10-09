@@ -119,21 +119,21 @@ fi
 
 # CLI CHECK []
 # prüfen was installiert ist oder wenn nichts davon bla bla...
-if [ -d ${megacli_dir}/ ]; then
-	$corecmd="/opt/MegaRAID/MegaCli/./MegaCli64";
-elif []; then
-if [ -d ${storecli_dir}/ ]; then
-	$corecmd="/opt/MegaRAID/storcli/./storcli64";
-
-else
-read -p "Install Store-Manager (y/n)? " installcli
-	if [ $installcli = y ];then
-	gunzip package/storcli_All_OS.zip
-	dpkg-i package/storecli_All_OS/Ubuntu/storcli_1.23.02_all.deb
-	else
-	echo -e "restart the script"
-	fi
-fi
+#if [ -d ${megacli_dir}/ ]; then
+#	$corecmd="/opt/MegaRAID/MegaCli/./MegaCli64";
+#elif []; then
+#if [ -d ${storecli_dir}/ ]; then
+#	$corecmd="/opt/MegaRAID/storcli/./storcli64";
+#
+#else
+#read -p "Install Store-Manager (y/n)? " installcli
+#	if [ $installcli = y ];then
+#	gunzip package/storcli_All_OS.zip
+#	dpkg-i package/storecli_All_OS/Ubuntu/storcli_1.23.02_all.deb
+#	else
+#	echo -e "restart the script"
+#	fi
+#fi
 
 
 # ---------------
