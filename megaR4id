@@ -8,7 +8,7 @@
 ######################################################################
 
 ######################################################################
-# last modify: 06.10.2017
+# last modify: 09.10.2017
 # bug or anything: d43M0n23@3xpl0it.com
 ######################################################################
 
@@ -16,13 +16,14 @@
 # Bash sTyl3!
 clear='\033[0m'			#alle Attribute zurücksetzen
 bold='\033[1m'			#Fettschrift
-red='\033[31m'			#Schriftfarbe rot
-green='\033[32m'		#Schriftfarbe grün
-yell='\033[33m'			#Schriftfarbe gelb
-blue='\033[34m'			#Schriftfarbe blau
-mag='\033[35m'			#Schriftfarbe magenta
-turk='\033[36m'			#Schriftfarbe türkis
-white='\033[37m'		#Schriftfarbe weiß
+red='\033[31m'			#rot
+green='\033[32m'		#grün
+yell='\033[33m'			#gelb
+blue='\033[34m'			#blau
+mag='\033[35m'			#magenta
+turk='\033[36m'			#türkis
+white='\033[37m'		#weiß
+orange='\033[93m'               #orange
 ######################################################################
 
 
@@ -37,6 +38,7 @@ Escape="\033";
   YellowF="${Escape}[33m";
   BlueF="${Escape}[34m";
   CyanF="${Escape}[36m";
+  orange="${Escape}[93m";
 Reset="${Escape}[0m";
 }
 
@@ -115,13 +117,33 @@ cd
 exit
 fi
 
+# CLI CHECK []
+# prüfen was installiert ist oder wenn nichts davon bla bla...
+if [ -d ${megacli_dir}/ ]; then
+	$corecmd="/opt/MegaRAID/MegaCli/./MegaCli64";
+elif []; then
+if [ -d ${storecli_dir}/ ]; then
+	$corecmd="/opt/MegaRAID/storcli/./storcli64";
+
+else
+read -p "Install Store-Manager (y/n)? " installcli
+	if [ $installcli = y ];then
+	gunzip package/storcli_All_OS.zip
+	dpkg-i package/storecli_All_OS/Ubuntu/storcli_1.23.02_all.deb
+	else
+	echo -e "restart the script"
+	fi
+fi
+
+
 # ---------------
 # SCRIPT FUNCTION
 # ---------------
 
 
 sh_stage1 () {
-echo " VOLL DER CODE HIER"
+echo "Controller Status und Config"
+$corecmd -AdpAllInfo -aAll
 }
 
 
@@ -129,7 +151,7 @@ echo " VOLL DER CODE HIER"
 # FUNTION TO EXIT FRAMEWORK
 # -------------------------
 sh_exit () {
-echo ${BlueF}[â˜ ]${white} Exit megaR4id framework...${Reset};
+echo ${BlueF}[*]${white} Exit megaR4id framework...${Reset};
 sleep 1
 exit
 }
