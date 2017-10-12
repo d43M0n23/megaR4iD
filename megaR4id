@@ -121,8 +121,7 @@ fi
 # prüfen was installiert ist oder wenn nichts davon bla bla...
 #if [ -d ${megacli_dir}/ ]; then
 #	$corecmd="/opt/MegaRAID/MegaCli/./MegaCli64";
-#elif []; then
-#if [ -d ${storecli_dir}/ ]; then
+#elif [ -d ${storecli_dir}/ ]; then
 #	$corecmd="/opt/MegaRAID/storcli/./storcli64";
 #
 #else
@@ -135,17 +134,21 @@ fi
 #	fi
 #fi
 
-
+corecmd="/opt/MegaRAID/storcli/./storcli64";
 # ---------------
 # SCRIPT FUNCTION
 # ---------------
 
 
 sh_stage1 () {
-echo "Controller Status und Config"
+echo -e "Controller Status und Config\n"
 $corecmd -AdpAllInfo -aAll
 }
 
+sh_stage2 () {
+echo -e "Ausgabe der Festplatteninformationen\n"
+$corecmd-LDInfo -L0 -a0
+}
 
 # -------------------------
 # FUNTION TO EXIT FRAMEWORK
@@ -193,8 +196,8 @@ cat << !
     _____________________________________________________________________
     | OPTION |                  DESCRIPTION(filters)                    |
     ---------------------------------------------------------------------
-    |   1    -  Firewall filter  (tcp/udp)      -  report/capture_creds |
-    |   2    -  Capture cookies  (http/auth)    -  sidejacking attack   |
+    |   1    -  Controller Status und Config                            |
+    |   2    -  Ausgabe der Festplatteninformationen                    |
     |   3    -  Drop all packets (src/dst)      -  packets drop/kill    |
     |   4    -  Redirect browser traffic        -  to another domain    |
     |   5    -  Redirect browser traffic        -  to google sphere     |
