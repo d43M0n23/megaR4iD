@@ -31,7 +31,7 @@ orange='\033[93m'               #orange
 # chose your own 'personalized prompt'.
 # -▷   -▶   '>'  ☭   ✿   ☯   ☠   ☆   ➽  ♛  ⊶
 # -------------------------------------
-PROMPT_DISPLAY=--▷
+PrompT=--▷
 
 
 # -----------------------------------
