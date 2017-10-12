@@ -26,10 +26,18 @@ white='\033[37m'		#weiß
 orange='\033[93m'               #orange
 ######################################################################
 
+# -------------------------------------
+# Prompt displays available
+# chose your own 'personalized prompt'.
+# -▷   -▶   '>'  ☭   ✿   ☯   ☠   ☆   ➽  ♛  ⊶
+# -------------------------------------
+PROMPT_DISPLAY=--▷
+
 
 # -----------------------------------
 # Colorise shell Script output leters
 # -----------------------------------
+
 Colors() {
 Escape="\033";
   white="${Escape}[0m";
