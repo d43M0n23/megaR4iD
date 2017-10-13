@@ -155,7 +155,7 @@ $corecmd -AdpAllInfo -aAll
 
 sh_stage2 () {
 echo -e "Ausgabe der Festplatteninformationen\n"
-$corecmd-LDInfo -L0 -a0
+$corecmd -LDInfo -L0 -a0
 }
 
 # -------------------------
@@ -226,9 +226,10 @@ cat << !
     ---------------------------------------------------------------------
 !
 sleep 1
-echo -e ${white} Chose Your Option${RedF}: ${Reset};
-echo -n "$PrompT"
-read choice
+#echo -e ${white} Chose Your Option${RedF}: ${Reset};
+#echo -n "$PrompT"
+#read choice
+read -p " Chose Your Option:" choice
 case $choice in
 1) sh_stage1 ;;
 2) sh_stage2 ;;
