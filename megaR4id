@@ -156,12 +156,12 @@ corecmd="/opt/MegaRAID/storcli/./storcli64";
 
 sh_stage1 () {
 echo -e "Controller Status und Config\n"
-$corecmd -AdpAllInfo -aAll
+$corecmd /c0 show all
 }
 
 sh_stage2 () {
 echo -e "Ausgabe der Festplatteninformationen\n"
-$corecmd -LDInfo -L0 -a0
+$corecmd /c0 /eall /sall show (all)
 }
 
 # -------------------------
