@@ -157,6 +157,7 @@ corecmd="/opt/MegaRAID/storcli/./storcli64";
 sh_stage1 () {
 echo -e "Controller Status und Config\n"
 $corecmd /c0 show all
+sleep 10
 }
 
 sh_stage2 () {
