@@ -1,4 +1,4 @@
-7#!/bin/bash
+#!/bin/bash
 
 ######################################################################
 # megaR4id
@@ -168,7 +168,7 @@ $corecmd /c0 /eall /sall show all
 # FUNTION TO EXIT FRAMEWORK
 # -------------------------
 sh_exit () {
-echo ${BlueF}[*]${white} Exit megaR4id framework...${Reset};
+echo -e "${BlueF}[*]${white} Exit megaR4id framework...${Reset}";
 sleep 1
 exit
 }
