@@ -163,7 +163,27 @@ sleep 10
 sh_stage2 () {
 echo -e "Ausgabe der Festplatteninformationen\n"
 $corecmd /c0 /eall /sall show all
+sleep 10
 }
+
+sh_stage3 () {
+echo -e "Aktivieren von Zusatzfeatures\n"
+$corecmd /c0 /eall /sall show all
+sleep 10
+}
+
+sh_stage4 () {
+echo -e "Ausgabe der VirtualDrives\n"
+$corecmd /c0 /vall show all
+sleep 10
+}
+
+sh_stage5 () {
+echo -e "Status aller laufender Rebuilds\n"
+$corecmd /c0 /eall /sall show rebuild
+sleep 10
+}
+
 
 # -------------------------
 # FUNTION TO EXIT FRAMEWORK
@@ -213,20 +233,9 @@ cat << !
     ---------------------------------------------------------------------
     |   1    -  Controller Status und Config                            |
     |   2    -  Ausgabe der Festplatteninformationen                    |
-    |   3    -  Drop all packets (src/dst)      -  packets drop/kill    |
-    |   4    -  Redirect browser traffic        -  to another domain    |
-    |   5    -  Redirect browser traffic        -  to google sphere     |
-    |   6    -  Sniff browser traffic (http)    -  visited url's        |
-    |   7    -  Sniff browser traffic (http)    -  capture pictures     |
-    |   8    -  Sniff chat messages   (live)    -  AOL,IRC,YAHOO,MSN    |
-    |   9    -  Inject backdoor into (</body>)  -  exe,bat,jar,ps1,dll  |
-    |  10    -  Firefox browser heap-spray      -  buffer overflow      |
-    |  11    -  Android browser heap-spray      -  buffer overflow      |
-    |  12    -  Tor-browser heap-spray(windows) -  buffer overflow      |
-    |  13    -  Clone website + keylooger       -  javascritp_keylooger |
-    |  14    -  Modem/router login webpage      -  javascritp_keylooger |
-    |  15    -  Replace website images          -  img src=http://other |
-    |  16    -  Replace website text            -  replace: worlds      |
+    |   3    -  Aktivieren von Zusatzfeatures (CacheCade,Fastpath,..)   |
+    |   4    -  Ausgabe der VirtualDrives                               |
+    |   5    -  Status aller laufender Rebuilds                         |
     |                                                                   |
     |   H    -  megaR4id github help                                    |
     |   E    -  Exit/close megaR4id                                     |
