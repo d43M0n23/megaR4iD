@@ -1,4 +1,4 @@
-#!/bin/bash
+7#!/bin/bash
 
 ######################################################################
 # megaR4id
@@ -161,7 +161,7 @@ $corecmd /c0 show all
 
 sh_stage2 () {
 echo -e "Ausgabe der Festplatteninformationen\n"
-$corecmd /c0 /eall /sall show (all)
+$corecmd /c0 /eall /sall show all
 }
 
 # -------------------------
