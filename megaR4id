@@ -6,7 +6,7 @@
 # Needs MegaRaid/CLi installed
 # command: > megaR4id or megaR4id --option
 ######################################################################
-#
+
 ######################################################################
 # last modify: 26.09.2018
 # bug or anything: d43M0n23@3xpl0it.com
@@ -75,6 +75,8 @@ megacli_dir=/opt/MegaRAID/MegalCli
 # storecli directory default
 storecli_dir=/opt/MegaRAID/storecli
 
+#########################################################################
+#########################################################################
 # INSTALL
 if [ ! -d $INSTALL_DIR ]; then
 echo -e "\n${green} + -- --=[This is your first run of the megaR4id script${clear}"
@@ -130,6 +132,8 @@ echo -e "\n${turk}deinstall Finish${clear}"
 cd
 exit
 fi
+############################################################################
+############################################################################
 
 # CLI CHECK []
 # prüfen was installiert ist oder wenn nichts davon bla bla...
@@ -148,7 +152,19 @@ fi
 #	fi
 #fi
 
+
 corecmd="/opt/MegaRAID/storcli/./storcli64";
+# ---------------
+# MAIL FUNKTION
+# ---------------
+roaduser=$1
+
+if [ $roadcmd = mail ]; then
+$corecmd /c0 /eall /sall show > ${hostname}_raid.txt
+mail -s "${Hostname} - Raidstatus" alex@xcoorp.com < ${hostname}_raid.txt -aFrom:${hostname}@xcoorp.com
+fi
+
+
 # ---------------
 # SCRIPT FUNCTION
 # ---------------
@@ -218,7 +234,9 @@ echo -e '  / __ `__ \/ _ \/ __ `/ __ `/ /_/ / // /_/ / __  / '
 echo -e ' / / / / / /  __/ /_/ / /_/ / _, _/__  __/ / /_/ /  '
 echo -e '/_/ /_/ /_/\___/\__, /\__,_/_/ |_|  /_/ /_/\__,_/   '
 echo -e '               /____/                               '
-echo -e "\n${orange} + -- --=[https://3xpl0it.com${clear} ${red}Version ${version}${clear}"
+#echo -e "\n${orange} + -- --=[https://3xpl0it.com${clear} ${red}Version ${version}${clear}"
+echo -e "\n${orange} + -- --=[https://xcoorp.com${clear} ${red}Version ${version}${clear}"
+
 sleep 1
 
 echo -e "\n"
