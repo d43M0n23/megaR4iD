@@ -162,6 +162,7 @@ roaduser=$1
 if [ $roadcmd = mail ]; then
 $corecmd /c0 /eall /sall show > ${hostname}_raid.txt
 mail -s "${Hostname} - Raidstatus" alex@xcoorp.com < ${hostname}_raid.txt -aFrom:${hostname}@xcoorp.com
+exit
 fi
 
 
