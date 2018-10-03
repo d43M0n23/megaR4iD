@@ -4,7 +4,7 @@
 # megaR4id
 # Converts syntax of LSI Raid Controller 2 easy use with short command
 # Needs MegaRaid/CLi installed
-# command: > megaR4id or megaR4id --option
+# command: > megaR4id or megaR4id -mail
 ######################################################################
 
 ######################################################################
