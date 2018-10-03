@@ -275,7 +275,7 @@ cat << !
     |   4    -  Ausgabe der Festplatteninformationen (FULL)             |
     |   5    -  Aktivieren von Zusatzfeatures (CacheCade,Fastpath,..)   |
     |   6    -  Ausgabe der VirtualDrives                               |
-    |   7    -  Ausgabe der VirtualDrives                               |
+    |   7    -  Ausgabe der VirtualDrives (FULL)                        |
     |   8    -  Status aller laufender Rebuilds                         |
     |                                                                   |
     |   H    -  megaR4id github help                                    |
@@ -286,7 +286,7 @@ sleep 1
 #echo -e ${white} Chose Your Option${RedF}: ${Reset};
 #echo -n "$PrompT"
 #read choice
-read -p " Chose Your Option:" choice
+read -p " Chose Your Option: " choice
 case $choice in
 1) sh_stage1 ;;
 2) sh_stage2 ;;
