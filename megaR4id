@@ -8,7 +8,7 @@
 ######################################################################
 
 ######################################################################
-# last modify: 26.09.2018
+# last modify: 03.10.2018
 # bug or anything: d43M0n23@3xpl0it.com
 ######################################################################
 
@@ -256,7 +256,7 @@ echo -e ' / / / / / /  __/ /_/ / /_/ / _, _/__  __/ / /_/ /  '
 echo -e '/_/ /_/ /_/\___/\__, /\__,_/_/ |_|  /_/ /_/\__,_/   '
 echo -e '               /____/                               '
 #echo -e "\n${orange} + -- --=[https://3xpl0it.com${clear} ${red}Version ${version}${clear}"
-echo -e "\n${orange} + -- --=[https://xcoorp.com${clear} ${red}Version ${version}${clear}"
+echo -e "\n${orange} + -- --=[https://xcoorp.com${clear} ${yell}Version ${version}${clear}"
 
 sleep 1
 
