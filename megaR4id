@@ -198,7 +198,8 @@ sleep 10
 
 sh_stage5 () {
 echo -e "Aktivieren von Zusatzfeatures\n"
-$corecmd /c0 /eall /sall show all
+read -p "Enter a key-string: " key
+$corecmd /c0 set aso key=$key
 sleep 10
 }
 
