@@ -60,7 +60,7 @@ Reset="${Escape}[0m";
 ##Base-Variablen
 DATE=$(date +%F)
 version=v1.0
-vdate=24.09.2018
+vdate=03.10.2018
 
 # Controller ID default
 controller=0
@@ -173,29 +173,48 @@ fi
 
 sh_stage1 () {
 echo -e "Controller Status und Config\n"
-$corecmd /c0 show all
+$corecmd /c0 show
 sleep 10
 }
 
 sh_stage2 () {
-echo -e "Ausgabe der Festplatteninformationen\n"
-$corecmd /c0 /eall /sall show all
+echo -e "Controller Status und Config (FULL)\n"
+$corecmd /c0 show all
 sleep 10
 }
 
 sh_stage3 () {
+echo -e "Ausgabe der Festplatteninformationen\n"
+$corecmd /c0 /eall /sall show
+sleep 10
+}
+
+sh_stage4 () {
+echo -e "Ausgabe der Festplatteninformationen (FULL)\n"
+$corecmd /c0 /eall /sall show all
+sleep 10
+}
+
+
+sh_stage5 () {
 echo -e "Aktivieren von Zusatzfeatures\n"
 $corecmd /c0 /eall /sall show all
 sleep 10
 }
 
-sh_stage4 () {
+sh_stage6 () {
 echo -e "Ausgabe der VirtualDrives\n"
+$corecmd /c0 /vall show
+sleep 10
+}
+
+sh_stage7 () {
+echo -e "Ausgabe der VirtualDrives (FULL)\n"
 $corecmd /c0 /vall show all
 sleep 10
 }
 
-sh_stage5 () {
+sh_stage8 () {
 echo -e "Status aller laufender Rebuilds\n"
 $corecmd /c0 /eall /sall show rebuild
 sleep 10
@@ -251,10 +270,13 @@ cat << !
     | OPTION |                  DESCRIPTION(filters)                    |
     ---------------------------------------------------------------------
     |   1    -  Controller Status und Config                            |
-    |   2    -  Ausgabe der Festplatteninformationen                    |
-    |   3    -  Aktivieren von Zusatzfeatures (CacheCade,Fastpath,..)   |
-    |   4    -  Ausgabe der VirtualDrives                               |
-    |   5    -  Status aller laufender Rebuilds                         |
+    |   2    -  Controller Status und Config (FULL)                     |
+    |   3    -  Ausgabe der Festplatteninformationen                    |
+    |   4    -  Ausgabe der Festplatteninformationen (FULL)             |
+    |   5    -  Aktivieren von Zusatzfeatures (CacheCade,Fastpath,..)   |
+    |   6    -  Ausgabe der VirtualDrives                               |
+    |   7    -  Ausgabe der VirtualDrives                               |
+    |   8    -  Status aller laufender Rebuilds                         |
     |                                                                   |
     |   H    -  megaR4id github help                                    |
     |   E    -  Exit/close megaR4id                                     |
