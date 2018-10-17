@@ -154,16 +154,17 @@ fi
 
 
 corecmd="/opt/MegaRAID/storcli/./storcli64";
+
 # ---------------
 # MAIL FUNKTION
 # ---------------
-roaduser=$1
 
-if [ $roadcmd = mail ]; then
+if [ "$1"  = "--mail" ]; then
 $corecmd /c0 /eall /sall show > ${hostname}_raid.txt
 mail -s "${Hostname} - Raidstatus" alex@xcoorp.com < ${hostname}_raid.txt -aFrom:${hostname}@xcoorp.com
 exit
 fi
+
 
 
 # ---------------
