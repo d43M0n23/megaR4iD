@@ -162,7 +162,7 @@ corecmd="/opt/MegaRAID/storcli/./storcli64";
 if [ "$1"  = "--mail" ]; then
 hostname=$(hostname)
 $corecmd /c0 /eall /sall show > ${hostname}_raid.txt
-mail -s "${hostname} - Raidstatus" alex@xcoorp.com < ${hostname}_raid.txt -aFrom:${hostname}@xcoorp.com
+mail -s "${hostname} - Raidstatus" alex@xcoorp.com < ${hostname}_raid.txt -aFrom:Raid@xcoorp.com
 exit
 fi
 
