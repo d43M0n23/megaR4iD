@@ -166,7 +166,7 @@ if [ ${hostname} = "xenserver-hexa2" ]; then xenstore = "/var/run/sr-mount/332c9
 if [ ${hostname} = "xenserver-hexa3" ]; then xenstore = "/var/run/sr-mount/df292134-b0a1-66cf-ee3b-cb89efbdcf1b"; fi
 if [ ${hostname} = "xenserver-hexa4" ]; then xenstore = "/var/run/sr-mount/3689ea85-7544-f8ca-3596-6e82922f6df6"; fi
 $corecmd /c0 /eall /sall show > ${hostname}_raid.txt;
-cp ${hostname}_raid.txt ${xenstore};
+cp ${hostname}_raid.txt ${xenstore}/${hostname}_raid.txt;
 #mail -s "${hostname} - Raidstatus" alex@xcoorp.com < ${hostname}_raid.txt -aFrom:Raid@xcoorp.com
 exit
 fi
