@@ -161,8 +161,13 @@ corecmd="/opt/MegaRAID/storcli/./storcli64";
 
 if [ "$1"  = "--mail" ]; then
 hostname=$(hostname)
+if [ ${hostname} = "xenserver-hexa1" ]; then xenstore ="/var/run/9bdf51f4-374c-5270-e72f-7e4578869783";
+if [ ${hostname} = "xenserver-hexa2" ]; then xenstore ="/var/run/332c9af4-d1c2-a772-299f-1d359b0c8f51";
+if [ ${hostname} = "xenserver-hexa3" ]; then xenstore ="/var/run/df292134-b0a1-66cf-ee3b-cb89efbdcf1b";
+if [ ${hostname} = "xenserver-hexa4" ]; then xenstore ="/var/run/3689ea85-7544-f8ca-3596-6e82922f6df6";
 $corecmd /c0 /eall /sall show > ${hostname}_raid.txt
-mail -s "${hostname} - Raidstatus" alex@xcoorp.com < ${hostname}_raid.txt -aFrom:Raid@xcoorp.com
+cp ${hostname}_raid.txt /var/run/${xenstore}
+#mail -s "${hostname} - Raidstatus" alex@xcoorp.com < ${hostname}_raid.txt -aFrom:Raid@xcoorp.com
 exit
 fi
 
